@@ -6,7 +6,7 @@ export default function Home() {
     <>
       <Navbar />
 
-      <main className="relative w-full h-screen overflow-hidden">
+      <main className="relative w-full h-screen overflow-hidden ">
 
         {/* Background Image */}
         <img
