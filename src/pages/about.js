@@ -1,61 +1,105 @@
-import Navbar from '@/Components/Navbar'
+import Navbar from "@/Components/Navbar";
+import Footer from "@/pages/Footer";
+
+function StarRating({ rating }) {
+    return (
+        <div className="flex space-x-1 mt-3">
+            {[1, 2, 3, 4, 5].map((star) => (
+                <svg
+                    key={star}
+                    className={`w-5 h-5 ${star <= rating ? "text-yellow-400" : "text-gray-600"
+                        }`}
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                >
+                    <path d="M12 2l3 7h7l-5.5 4 2.5 7-6-4-6 4 2.5-7L2 9h7z" />
+                </svg>
+            ))}
+        </div>
+    );
+}
 
 export default function About() {
 
+    const techs = [
+        {
+            title: "Web Development",
+            desc: "Building fast, responsive, and scalable web applications using modern frameworks.",
+            icon: "💻",
+            rating: 5,
+        },
+        {
+            title: "Artificial Intelligence",
+            desc: "Creating smart solutions powered by machine learning and automation.",
+            icon: "🤖",
+            rating: 4,
+        },
+        {
+            title: "Cloud Computing",
+            desc: "Deploying secure and high-performance systems in the cloud.",
+            icon: "☁️",
+            rating: 4,
+        },
+        {
+            title: "UI / UX Design",
+            desc: "Designing beautiful and user-friendly digital experiences.",
+            icon: "🎨",
+            rating: 5,
+        },
+        {
+            title: "Cyber Security",
+            desc: "Protecting data and systems with modern security practices.",
+            icon: "🔐",
+            rating: 3,
+        },
+        {
+            title: "Mobile Development",
+            desc: "Developing cross-platform mobile apps with modern tools.",
+            icon: "📱",
+            rating: 4,
+        },
+    ];
+
     return (
         <>
-        
-        <Navbar />
+            <Navbar />
 
-            <section class="py-16 px-6 md:px-12 lg:px-20">
+            <section id="technologies" className="bg-black py-20 px-6 md:px-16 text-white">
 
-                <h1 class="font-extrabold text-center lg:mt-30 md:mt-30 mt-20 text-4xl md:text-5xl mb-12 tracking-wide text-teal-400">
-                    Our experiment and discoveries!
-                </h1>
+                {/* Title */}
+                <div className="text-center mb-12">
+                    <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-teal-400 to-cyan-500 bg-clip-text text-transparent">
+                        Technologies
+                    </h2>
+                    <p className="mt-4 text-gray-400">
+                        Modern tools and technologies that power innovative solutions
+                    </p>
+                </div>
 
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                {/* Cards */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+                    {techs.map((tech, index) => (
+                        <div
+                            key={index}
+                            className="bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl p-8 
+              hover:scale-105 transition-transform duration-300 hover:shadow-xl"
+                        >
+                            <div className="text-4xl mb-4">{tech.icon}</div>
 
-                    <div
-                        class="bg-teal-100 rounded-2xl shadow-lg overflow-hidden transform transition duration-500 hover:scale-105 hover:shadow-2xl hover:bg-teal-50">
-                        <img src="https://images.unsplash.com/photo-1631803923305-d8bc720defa1?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2071" alt="" className="w-full h-64 object-cover transition-transform duration-500 hover:scale-110" />
+                            <h3 className="text-xl font-semibold mb-2">{tech.title}</h3>
 
-                        <div class="p-5 text-center">
-                            <h2 class="text-xl font-bold text-black">Organism</h2>
-                            <p class="text-sm text-gray-600 mt-2">Experiment and studies about organisms benefits in earths surface.</p>
+                            <p className="text-gray-400 text-sm leading-relaxed">
+                                {tech.desc}
+                            </p>
+
+                            {/* Rating */}
+                            <StarRating rating={tech.rating} />
                         </div>
-                    </div>
-
-                    <div
-                        class="bg-teal-100 rounded-2xl shadow-lg overflow-hidden transform transition duration-500 hover:scale-105 hover:shadow-2xl hover:bg-teal-50">
-                        <img src="https://images.unsplash.com/photo-1707863080558-31e3e3e3ad86?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=880" alt="" class="w-full h-64 object-cover transition-transform duration-500 hover:scale-110" />
-
-                        <div class="p-5 text-center">
-                            <h2 class="text-xl font-bold text-black">Cloning Molecules</h2>
-                            <p class="text-sm text-gray-600 mt-2">Defining molecules for studies and other usage for science advancement</p>
-                        </div>
-                    </div>
-
-                    <div
-                        class="bg-teal-100 rounded-2xl shadow-lg overflow-hidden transform transition duration-500 hover:scale-105 hover:shadow-2xl hover:bg-teal-50">
-                        <img src="https://images.unsplash.com/photo-1757428179254-cfe561fc24a3?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1170" alt="" class="w-full h-64 object-cover transition-transform duration-500 hover:scale-110" />
-
-                        <div class="p-5 text-center">
-                            <h2 class="text-xl font-bold text-black">Water Gasses</h2>
-                            <p class="text-sm text-gray-600 mt-2">Turning water into gas matter, a research for new components</p>
-                        </div>
-                    </div>
-
-                    <div
-                        class="bg-teal-100 rounded-2xl shadow-lg overflow-hidden transform transition duration-500 hover:scale-105 hover:shadow-2xl hover:bg-teal-50">
-                        <img src="https://images.unsplash.com/photo-1656955191769-8e040e820f2a?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=687" alt="" class="w-full h-64 object-cover transition-transform duration-500 hover:scale-110" />
-
-                        <div class="p-5 text-center">
-                            <h2 class="text-xl font-bold text-black">Living Forest</h2>
-                            <p class="text-sm text-gray-600 mt-2">Finding forest heart beat and its unique characteristics</p>
-                        </div>
-                    </div>
+                    ))}
                 </div>
             </section>
+
+            <Footer />
         </>
-    )
+    );
 }

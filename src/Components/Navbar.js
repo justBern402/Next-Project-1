@@ -1,35 +1,36 @@
-import Link from 'next/link'
+import Link from "next/link";
 
-export default function BernNav() {
-
+export default function Navbar() {
     return (
         <>
-            <nav className="fixed z-5 w-full lg:h-30 md:h-30 h-25 backdrop-blur-md shadow-xl">
-                <div className="flex justify-center lg:my-10 md:my-10 my-5">
+            <nav className="fixed top-0 left-0 z-50 w-full backdrop-blur-xl bg-black/50 border-b border-white/10 shadow-2xl">
+                <div className="max-w-7xl mx-auto flex items-center justify-between px-6 md:px-10 h-20">
 
-                    <div className="absolute lg:left-15 md:left-15 left-5 font-extrabold lg:text-5xl md:text-5xl text-2xl text-white">
-                        uniVERSE
-                    </div>
+                    {/* Logo */}
+                    <h1 className="text-2xl md:text-4xl font-extrabold bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-500 bg-clip-text text-transparent tracking-wide">
+                        Upgrade
+                    </h1>
 
-                    <div className="">
-                        <ul className="flex lg:space-x-10 md:space-x-10 space-x-3 lg:mt-5 md:mt-5 mt-10 font-thin">
+                    {/* Links */}
+                    <ul className="flex gap-6 md:gap-10 text-white/90 font-medium">
 
-                            <Link href={'/'}>
-                                <li className="hover:underline cursor-pointer hover:scale-110">Home</li>
-                            </Link>
+                        {["Home", "About", "Contact"].map((item) => (
+                            <li key={item} className="relative group">
+                                <Link
+                                    href={`/${item === "Home" ? "" : item.toLowerCase()}`}
+                                    className="transition duration-300 hover:text-pink-400"
+                                >
+                                    {item}
+                                </Link>
 
-                            <Link href={'/about'}>
-                                <li className="hover:underline cursor-pointer hover:scale-110">About</li>
-                            </Link>
-                            
-                            <Link href={'/contact'}>
-                                <li className="hover:underline cursor-pointer hover:scale-110">Contact</li>
-                            </Link>
-                          
-                        </ul>
-                    </div>
+                                {/* Animated underline */}
+                                <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-gradient-to-r from-pink-400 to-purple-500 transition-all duration-300 group-hover:w-full"></span>
+                            </li>
+                        ))}
+
+                    </ul>
                 </div>
             </nav>
         </>
-    )
+    );
 }
